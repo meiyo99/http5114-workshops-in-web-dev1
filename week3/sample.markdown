@@ -4,4 +4,4 @@
 
 My name is Mayuresh.
 
-Herllo
+This is __bold__ and this is _italics_.
