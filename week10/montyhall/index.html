@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Monty Hall Problem</title>
+</head>
+<body>
+
+    <h1>The Monty Hall Problem</h1>
+
+    <script>
+
+        var switchCounter = 0;
+        var stayCounter = 0;
+
+        for(var i = 0; i < 10000; i ++)
+        {
+
+            // Create a variable to store the car position
+            var car = Math.ceil(Math.random() * 3);
+            document.write("<p>The car is behind door number " + car + "</p>");
+
+            // Create a variable to store the contentant choice
+            var choice = Math.ceil(Math.random() * 3);
+            document.write("<p>The contestant chose door number " + choice + "</p>");
+
+            // The host opens a door
+            /*
+            var remove = Math.ceil(Math.random() * 3);
+            while(remove == car || remove == choice)
+            {
+                remove = Math.ceil(Math.random() * 3);
+            }
+            */
+
+            do
+            {
+                var remove = Math.ceil(Math.random() * 3);
+            } 
+            while(remove == car || remove == choice);
+
+            document.write("<p>The host removes door number " + remove + "</p>");
+
+            // Check the correct answer
+            if(choice == car)
+            {
+                stayCounter ++;
+                document.write("<p style='color:green;'>Contestant should STAY</p>");
+            }
+            else
+            {
+                switchCounter ++;
+                document.write("<p style='color:red;'>Contestant should SWITCH</p>");
+            }
+
+        }
+
+        var percent = (stayCounter / 10000 * 100).toFixed(2);
+        document.write("<h2>STAY is correct " + percent + "% of the time</h2>");
+
+    </script>
+    
+</body>
+</html>
